@@ -7,6 +7,37 @@ declare_id!("11111111111111111111111111111111"); // Replace with your actual pro
 pub mod simple_amm {
     use super::*;
 
+    // function to initialize the pool
+pub fn initialize_pool(ctx: Context<InitializePool>) -> Result<()> {
+
+    // get mutable reference to pool account
+    let pool = &mut ctx.accounts.pool;
+
+    // store token a mint in pool
+    pool.token_a_mint = ctx.accounts.token_a_mint.key();
+
+    // store token b mint in pool
+    pool.token_b_mint = ctx.accounts.token_b_mint.key();
+
+    // store vault a address in pool
+    pool.vault_a = ctx.accounts.vault_a.key();
+
+    // store vault b address in pool
+    pool.vault_b = ctx.accounts.vault_b.key();
+
+    // store lp token mint address in pool
+    pool.lp_mint = ctx.accounts.lp_mint.key();
+
+    // set initial lp supply to zero
+    pool.lp_supply = 0;
+
+    // log success message
+    msg!("pool initialized successfully!");
+
+    // return ok
+    Ok(())
+}
+
 }
 // accounts context for initializing a pool
 #[derive(Accounts)]
