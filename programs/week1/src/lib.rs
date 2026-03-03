@@ -2,7 +2,7 @@ use anchor_lang::prelude::*;
 use anchor_spl::token_interface::Mint as InterfaceMint;
 use anchor_spl::token::{Mint, Token, TokenAccount};
 
-declare_id!("11111111111111111111111111111111"); // Replace with your actual program ID
+declare_id!("7HoZA3BfHHEhNe4bmrNk2v9qfFNw4Ehy7rW6MKfciWs9"); // Replace with your actual program ID
 
 #[program]
 pub mod simple_amm {
