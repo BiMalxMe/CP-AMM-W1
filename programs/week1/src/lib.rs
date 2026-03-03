@@ -1,5 +1,6 @@
 use anchor_lang::prelude::*;
-use anchor_spl::token::{self, Mint, Token, TokenAccount, Transfer};
+use anchor_spl::token_interface::Mint as InterfaceMint;
+use anchor_spl::token::{Mint, Token, TokenAccount};
 
 declare_id!("11111111111111111111111111111111"); // Replace with your actual program ID
 
@@ -48,10 +49,10 @@ pub struct InitializePool<'info> {
     pub user: Signer<'info>,
 
     // token a mint
-    pub token_a_mint: Account<'info, Mint>,
+    pub token_a_mint: InterfaceAccount<'info, InterfaceMint>,
 
     // token b mint
-    pub token_b_mint: Account<'info, Mint>,
+    pub token_b_mint: InterfaceAccount<'info, InterfaceMint>,
 
     // pool account (PDA), stores pool state
     #[account(
